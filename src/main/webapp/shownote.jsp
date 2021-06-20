@@ -36,8 +36,9 @@
 		PreparedStatement pstmt=null;
 		
 		
-		
-		if (search1.equals("inout")){
+		if (search1.equals("total")){
+			sql = "select * from moneynote";
+		} else if (search1.equals("inout")){
 			sql = "select * from moneynote where in_out=?";
 		} else if (search1.equals("note")){
 			sql = "select * from moneynote where note LIKE ?";

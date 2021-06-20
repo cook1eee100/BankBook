@@ -17,6 +17,7 @@
 	</div>
 	<form action="shownote.jsp" method="POST">
 	  <div class="divbox-1">
+        <input type="radio" class="form-check-input" name="search1" value="total" id="id0" checked> <label for="id1">전체 기록 조회</label>
         <input type="radio" class="form-check-input" name="search1" value="inout" id="id1" checked> <label for="id1">수입/지출 (in / out 으로 검색)</label>
         <input type="radio" class="form-check-input" name="search1" value="note" id="id2"> <label for="id2">내용</label>
         <input type="radio" class="form-check-input" name="search1" value="iodate" id="id3"> <label for="id3">수입/지출일 (0000.00.00 형식)</label>

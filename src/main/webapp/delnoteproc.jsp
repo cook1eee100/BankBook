@@ -21,14 +21,13 @@
 			if (checkList!=null){
 				for (int i=0; i<checkList.length;i++){
 					int no = Integer.parseInt(checkList[i]);
-					sql = "update moneynote set confirm = ? where no = ?";
+					sql = "delete from moneynote where no = ?";
 					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, "Y");
-					pstmt.setInt(2, no);
+					pstmt.setInt(1, no);
 					pstmt.executeUpdate();
 				}
 			}
-			response.sendRedirect("confirmnote.jsp");
+			response.sendRedirect("delnote.jsp");
 		} catch (SQLException ex){
 			out.println("SQLException: "+ex.getMessage());
 		} finally{

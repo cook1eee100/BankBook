@@ -1,19 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
 	<title>Insert title here</title>
-	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./resources/css/bootstrap.min.css?after">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
 
 	<div class="layout-1">
-		<div class="container">
-			<h1 class="display-5">¿ëµ·ÀÇ ¼öÀÔ°ú ÁöÃâÀ» °ü¸®ÇÏ´Â ÆäÀÌÁöÀÔ´Ï´Ù.</h1>
+		<div class="container" align="center">
+			<h1 class="display-5">ìš©ëˆì˜ ìˆ˜ìž…ê³¼ ì§€ì¶œì„ ê´€ë¦¬í•˜ëŠ” íŽ˜ì´ì§€ìž…ë‹ˆë‹¤.</h1>
 		</div>
 	</div>
 
@@ -22,13 +21,19 @@
 			<div class="container">
 				<div align="center">
 					<div class="col-md-4">
-						<h5>·Î±×ÀÎ ÈÄ »ç¿ëÇÏ¼¼¿ä.</h5>
+						<h5>ë¡œê·¸ì¸ í›„ ì‚¬ìš©í•˜ì„¸ìš”.</h5>
 					</div>
 				</div>
 			</div>
 		</c:when>
 		<c:otherwise>
-			<h5><%=sessionId%>´Ô È¯¿µÇÕ´Ï´Ù.</h5>
+			<div class="container">
+				<div align="center">
+					<div class="col-md-4">
+						<h5><%=sessionId%>ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.</h5>
+					</div>
+				</div>
+			</div>
 		</c:otherwise>
 	</c:choose>
 

@@ -7,10 +7,10 @@ create table moneynote(
 	iodate date,
 	memo varchar(50),
 	confirm char(1) default 'N'
-);
+)default CHARSET=utf8;
 
 
-insert into moneynote(email, money, in_out, note, iodate, memo) values("bob1@ab.cp", 120000, "in", "알바급여", "2021.04.17", "4월 알바급여 받음sdddddddddddddddddddddddddddddddd");
+insert into moneynote(email, money, in_out, note, iodate, memo) values("bob1@ab.cp", 120000, "in", "5알바급여", "2021.04.17", "4월 알바급여 받음2");
 
 select * from moneynote;
 

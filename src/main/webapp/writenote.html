@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
+	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	  <div class="container-fluid">
-	    <a class="navbar-brand" href="index.jsp">°³ÀÎ ÀçÁ¤ °ü¸®</a>
+	    <a class="navbar-brand" href="index.jsp">ê°œì¸ ìž¬ì • ê´€ë¦¬</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -19,31 +19,34 @@
 	          <a class="nav-link active" href="index.jsp">Home</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="">¼öÀÔ/ÁöÃâ ±â·Ï</a>
+	          <a class="nav-link" href="writenote.html">ìˆ˜ìž…/ì§€ì¶œ ê¸°ë¡</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="shownote.jsp">±â·Ï Á¶È¸</a>
+	          <a class="nav-link" href="search.jsp">ê¸°ë¡ ì¡°íšŒ</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="confirmnote.jsp">±â·Ï È®Á¤</a>
+	          <a class="nav-link" href="confirmnote.jsp">ê¸°ë¡ í™•ì •</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="modnote.jsp">±â·Ï º¯°æ ¹× »èÁ¦</a>
+	          <a class="nav-link" href="modnote.jsp">ê¸°ë¡ ë³€ê²½</a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="delnote.jsp">ê¸°ë¡ ì‚­ì œ</a>
 	        </li>
 	      </ul>
-	      <a class="nav-link" href="#">·Î±×¾Æ¿ô</a>
-	      <a class="nav-link" href="#">È¸¿øÁ¤º¸ ¼öÁ¤</a>
+	      <a class="nav-link" href="logoutMember.jsp">ë¡œê·¸ì•„ì›ƒ</a>
+	      <a class="nav-link" href="updateMember.jsp">íšŒì›ì •ë³´ ìˆ˜ì •</a>
 	    </div>
 	  </div>
 	</nav>
-	<h1 style="padding-top:2rem; padding-left:2rem;">¼öÀÔÁöÃâ ±â·Ï ÀÔ·Â</h1>
+	<h1 style="padding-top:2rem; padding-left:2rem;">ìˆ˜ìž…ì§€ì¶œ ê¸°ë¡ ìž…ë ¥</h1>
 	<div class="layout-2">
 		<form action="writenoteproc.jsp" method="POST">
-			<label class="form-label mt-4">ÀÌ¸ÞÀÏ</label>
+			<label class="form-label mt-4">ì´ë©”ì¼</label>
 			<input type="email" class="form-control" name="email" placeholder="Enter email">
-			<label class="form-label mt-4">¿ëµ·</label>
+			<label class="form-label mt-4">ìš©ëˆ</label>
 			<input type="text" class="form-control" name="money" placeholder="Enter money">
-			<label class="form-label mt-4">¼öÀÔ/ÁöÃâ</label>
+			<label class="form-label mt-4">ìˆ˜ìž…/ì§€ì¶œ</label>
 			<div class="form-check">
 		      <label class="form-check-label">
 		        <input type="radio" class="form-check-input" name="inout" value="in">in
@@ -54,16 +57,16 @@
 		        <input type="radio" class="form-check-input" name="inout" value="out">out
 		      </label>
 		    </div>
-			<label class="form-label mt-4">³»¿ë</label>
+			<label class="form-label mt-4">ë‚´ìš©</label>
 			<input type="text" class="form-control" name="note" placeholder="Enter note">
-			<label class="form-label mt-4">¼öÀÔÁöÃâÀÏ</label>
+			<label class="form-label mt-4">ìˆ˜ìž…ì§€ì¶œì¼</label>
 			<input type="text" class="form-control" name="iodate" placeholder="Enter date">
-			<small class="form-text text-muted"> ÀÔ·Â Çü½Ä : ex) 0000.00.00 </small><br>
-			<label class="form-label mt-4">¸Þ¸ð</label>
+			<small class="form-text text-muted"> ìž…ë ¥ í˜•ì‹ : ex) 0000.00.00 </small><br>
+			<label class="form-label mt-4">ë©”ëª¨</label>
       		<textarea class="form-control" name="memo" rows="3"></textarea>
 		    <br>
-		    <button type="submit" class="btn btn-primary">Àü¼Û</button>
-		    <button type="reset" class="btn btn-primary">¸®¼Â</button>
+		    <button type="submit" class="btn btn-primary">ì „ì†¡</button>
+		    <button type="reset" class="btn btn-primary">ë¦¬ì…‹</button>
 		</form>
 	</div>
 	
@@ -72,6 +75,15 @@
 		<p>&copy; Bankbook</p>
 		</footer>
 	</div>
-</footer>
 </body>
+<script>
+	function sessionCheck(){
+		var sessionId = sessionStorage.getItem("sessionId");
+		
+		if (!sessionId){
+			alert("ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ìž…ë‹ˆë‹¤.");
+			return false;
+		}
+	}
+</script>
 </html>

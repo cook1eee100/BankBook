@@ -1,50 +1,62 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="java.sql.*" %>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
 	<title>Insert title here</title>
-	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./resources/css/bootstrap.min.css?after">
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 	<%@ include file="dbconn.jsp" %>
 	
-	<div class="footer-1" >
-      <select class="form-select form-select-sm" id="">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-        <input type="text" class="form-control form-control-sm" id="" placeholder="°Ë»öÁ¶°Ç">
-    </div>
-	
+
 	<div class="footer-1">
 	  <table class="table table-hover" align="center">
 		<thead>
 		  <tr>
-		    <th scope="col">¹øÈ£</th>
-		    <th scope="col">ÀÌ¸ÞÀÏ</th>
-		    <th scope="col">¿ëµ·</th>
-		    <th scope="col">¼öÀÔ/ÁöÃâ</th>
-		    <th scope="col">³»¿ë</th>
-		    <th scope="col">¼öÀÔ/ÁöÃâÀÏ</th>
-		    <th scope="col">¸Þ¸ð</th>
-		    <th scope="col">º¯°æ°¡´É¿©ºÎ</th>
+		    <th scope="col">ë²ˆí˜¸</th>
+		    <th scope="col">ì´ë©”ì¼</th>
+		    <th scope="col">ìš©ëˆ</th>
+		    <th scope="col">ìˆ˜ìž…/ì§€ì¶œ</th>
+		    <th scope="col">ë‚´ìš©</th>
+		    <th scope="col">ìˆ˜ìž…/ì§€ì¶œì¼</th>
+		    <th scope="col">ë©”ëª¨</th>
+		    <th scope="col">ë³€ê²½ê°€ëŠ¥ì—¬ë¶€</th>
 		  </tr>
 		</thead>
 		
 	<%
+		String search1 = request.getParameter("search1");
+		String search2 = request.getParameter("search2");
+		String sql=null;
+		
 		ResultSet rs=null;
 		PreparedStatement pstmt=null;
 		
+		
+		
+		if (search1.equals("inout")){
+			sql = "select * from moneynote where in_out=?";
+		} else if (search1.equals("note")){
+			sql = "select * from moneynote where note LIKE ?";
+			search2 = String.format("%%%s%%", search2);
+		} else if (search1.equals("iodate")){
+			sql = "select * from moneynote where iodate=?";
+		}
+		
+		
+		
 		try{
-			String sql = "select * from moneynote";
-			pstmt=conn.prepareStatement(sql);
+			if (search2.equals("")){
+				sql = "select * from moneynote";
+				pstmt=conn.prepareStatement(sql);
+			}
+			else{
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, search2);
+			}
 			rs=pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -74,7 +86,7 @@
 	<%		
 			}
 		} catch (SQLException ex){
-			out.println("½ÇÆÐ");
+			out.println("ì‹¤íŒ¨");
 			out.println("SQLException: " + ex.getMessage());
 		}finally{
 			if (rs!=null)

@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="java.sql.*" %>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="EUC-KR">
 	<title>Insert title here</title>
-	<link rel="stylesheet" href="./resources/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./resources/css/bootstrap.min.css?after">
 </head>
 <body>
 	<%@ include file="header.jsp"%>
@@ -40,12 +39,12 @@
 		<table class="table table-hover">
 		  <thead>
 		    <tr>
-		      <th scope="col">ÀÌ¸ÞÀÏ</th>
-		      <th scope="col">¿ëµ·</th>
-		      <th scope="col">¼öÀÔ/ÁöÃâ</th>
-		      <th scope="col">³»¿ë</th>
-		      <th scope="col">¼öÀÔ/ÁöÃâÀÏ</th>
-		      <th scope="col">¸Þ¸ð</th>
+		      <th scope="col">ì´ë©”ì¼</th>
+		      <th scope="col">ìš©ëˆ</th>
+		      <th scope="col">ìˆ˜ìž…/ì§€ì¶œ</th>
+		      <th scope="col">ë‚´ìš©</th>
+		      <th scope="col">ìˆ˜ìž…/ì§€ì¶œì¼</th>
+		      <th scope="col">ë©”ëª¨</th>
 		    </tr>
 		  </thead>
 		  <tbody>
@@ -62,7 +61,7 @@
 	  </div>
 	<%
 		} catch(SQLException ex){
-			out.println("½ÇÆÐ");
+			out.println("ì‹¤íŒ¨");
 			out.println("SQLException: "+ex.getMessage());
 		} finally{
 			if (pstmt!=null)

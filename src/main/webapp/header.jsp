@@ -1,14 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<% request.setCharacterEncoding("utf-8"); %>
 <%
 	String sessionId=(String) session.getAttribute("sessionId");
 %>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.jsp">°³ÀÎ ÀçÁ¤ °ü¸®</a>
+    <a class="navbar-brand" href="index.jsp">ê°œì¸ ìž¬ì • ê´€ë¦¬</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,29 +18,43 @@
           <a class="nav-link active" href="index.jsp">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="writenote.html">¼öÀÔ/ÁöÃâ ±â·Ï</a>
+          <a class="nav-link" href="writenote.html" onClick="return sessionCheck()">ìˆ˜ìž…/ì§€ì¶œ ê¸°ë¡</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="shownote.jsp">±â·Ï Á¶È¸</a>
+          <a class="nav-link" href="search.jsp" onClick="return sessionCheck()">ê¸°ë¡ ì¡°íšŒ</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="confirmnote.jsp">±â·Ï È®Á¤</a>
+          <a class="nav-link" href="confirmnote.jsp" onClick="return sessionCheck()">ê¸°ë¡ í™•ì •</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="modnote.jsp">±â·Ï º¯°æ ¹× »èÁ¦</a>
+          <a class="nav-link" href="modnote.jsp" onClick="return sessionCheck()">ê¸°ë¡ ë³€ê²½</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="delnote.jsp" onClick="return sessionCheck()">ê¸°ë¡ ì‚­ì œ</a>
+        </li>
+          
       </ul>
       <c:choose>
       	<c:when test="${empty sessionId}">
-	      <a class="nav-link" href="#">·Î±×ÀÎ</a>
-	      <a class="nav-link" href="#">È¸¿ø°¡ÀÔ</a>
+	      <a class="nav-link" href="loginMember.jsp">ë¡œê·¸ì¸</a>
+	      <a class="nav-link" href="addMember.jsp">íšŒì›ê°€ìž…</a>
 	    </c:when>
 	    <c:otherwise>
-	      [<%=sessionId %>´Ô]
-	      <a class="nav-link" href="#">·Î±×¾Æ¿ô</a>
-	      <a class="nav-link" href="#">È¸¿øÁ¤º¸ ¼öÁ¤</a>
+	      [<%=sessionId %>ë‹˜]
+	      <a class="nav-link" href="logoutMember.jsp">ë¡œê·¸ì•„ì›ƒ</a>
+	      <a class="nav-link" href="updateMember.jsp">íšŒì›ì •ë³´ ìˆ˜ì •</a>
 	    </c:otherwise>
 	  </c:choose>
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+	function sessionCheck(){
+		if (${sessionId==null}) {
+			alert("ë¡œê·¸ì¸ì´ í•„ìš”í•œ ì„œë¹„ìŠ¤ìž…ë‹ˆë‹¤.");
+			location.href="loginMember.jsp";
+			return false;
+		}
+		return true;
+	}
+</script>

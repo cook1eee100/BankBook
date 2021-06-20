@@ -1,7 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="java.sql.*" %>
-<%@ taglib prefix="s" uri="http://java.sun.com/jstl/core_rt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
@@ -12,7 +10,7 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<%@ include file="dbconn.jsp" %>
-	<form action="confirmnoteproc.jsp" method="POST">
+	<form action="delnoteproc.jsp" method="POST">
 	<div class="footer-1">
 	  <table class="table table-hover">
 		<thead>
@@ -25,7 +23,7 @@
 		    <th scope="col">수입/지출일</th>
 		    <th scope="col">메모</th>
 		    <th scope="col">변경가능여부</th>
-		    <th scope="col">확정</th>
+		    <th scope="col">삭제</th>
 		  </tr>
 		</thead>
 		
@@ -60,16 +58,8 @@
 				    <td><%=memo %></td>
 				    <td><%=confirm %></td>
 				    <td>
-				      <div class="form-check">
-				        <c:set var="confirm" value="<%=confirm %>"/>
-				        <c:choose>
-				          <c:when test="${confirm eq 'Y'}">
-				            <input name="check" class="form-check-input" type="checkbox" value="<%=no%>" disabled="">
-				          </c:when>
-				          <c:otherwise>
-				            <input name="check" class="form-check-input" type="checkbox" value="<%=no%>">
-				          </c:otherwise>
-				        </c:choose>  
+				      <div class="form-check">			
+				        <input name="check" class="form-check-input" type="checkbox" value="<%=no%>">
 				      </div>
 				    </td>
 				  </tr>
@@ -95,7 +85,7 @@
 	  
 	</div>
 	<div class="footer-1" align="center">
-	  <button type="submit" class="btn btn-primary">확정</button>
+	  <button type="submit" class="btn btn-primary">삭제</button>
 	  <button type="reset" class="btn btn-primary">리셋</button>
 	</div>
 	</form>
